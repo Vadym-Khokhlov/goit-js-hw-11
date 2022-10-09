@@ -10,7 +10,7 @@ const dateRef = {
 };
 const buttonStart = document.querySelector('button[data-start]');
 buttonStart.disabled = true;
-let timer = 0;
+let countdownDuration = 0;
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -21,7 +21,7 @@ const options = {
       Notify.failure('Please choose a date in the future');
     } else {
       buttonStart.disabled = false;
-      timer = Date.parse(selectedDates[0]) - Date.parse(new Date());
+      countdownDuration = Date.parse(selectedDates[0]) - Date.parse(new Date());
     }
   },
 };
@@ -45,23 +45,25 @@ function addLeadingZero(value) {
 }
 
 flatpickr('#datetime-picker', options);
-buttonStart.addEventListener('click', countdownStarter);
+buttonStart.addEventListener('click', startCountdown);
 
-function countdownStarter() {
+function startCountdown() {
   const showTimer = setInterval(() => {
-    const { days, hours, minutes, seconds } = convertMs((timer = timer - 1000));
+    const { days, hours, minutes, seconds } = convertMs(
+      (countdownDuration = countdownDuration - 1000)
+    );
     dateRef.days.textContent = addLeadingZero(`${days}`);
     dateRef.hours.textContent = addLeadingZero(`${hours}`);
     dateRef.mins.textContent = addLeadingZero(`${minutes}`);
     dateRef.secs.textContent = addLeadingZero(`${seconds}`);
   }, 1000);
-  animationActivator();
+  activateAnimation();
   buttonStart.disabled = true;
 }
 
-function animationActivator() {
+function activateAnimation() {
   dateRef.secs.classList.toggle('value__seconds--active');
   const hurry = setInterval(() => {
-    Notify.info('Hurry up!');
+    Notify.info('Hurry up! Discount is still available');
   }, 30000);
 }
