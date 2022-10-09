@@ -10,11 +10,13 @@ function startClicker() {
     body.style.backgroundColor = color;
   }, START_DELAY);
   startButton.disabled = true;
+  stopButton.disabled = false;
 }
 
 function stopClicker() {
   clearInterval(intervalId);
   startButton.disabled = false;
+  stopButton.disabled = true;
 }
 
 startButton.addEventListener('click', startClicker);

@@ -16,3 +16,49 @@ img {
   display: block;
   max-width: 100%;
 }
+
+button {
+  border-radius: 25%;
+}
+
+#datetime-picker {
+  border-radius: 10%;
+  color: blue;
+}
+.timer {
+  display: flex;
+  justify-content: start;
+}
+
+.label {
+  margin-top: 20px;
+  color: darkmagenta;
+}
+
+.field {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: start;
+  margin-right: 10px;
+}
+
+.value {
+  display: flex;
+  justify-content: center;
+  color: darkblue;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 32;
+}
+.value__seconds--active {
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateY(-90deg);
+  }
+}

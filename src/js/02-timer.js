@@ -2,16 +2,15 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const inputDate = document.querySelector('datetime-picker');
-const buttonStart = document.querySelector('button[data-start]');
 const dateRef = {
   days: document.querySelector('[data-days]'),
   hours: document.querySelector('[data-hours]'),
   mins: document.querySelector('[data-minutes]'),
   secs: document.querySelector('[data-seconds]'),
 };
-let timer = 0;
+const buttonStart = document.querySelector('button[data-start]');
 buttonStart.disabled = true;
+let timer = 0;
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -46,6 +45,7 @@ function addLeadingZero(value) {
 }
 
 flatpickr('#datetime-picker', options);
+buttonStart.addEventListener('click', countdownStarter);
 
 function countdownStarter() {
   const showTimer = setInterval(() => {
@@ -55,6 +55,13 @@ function countdownStarter() {
     dateRef.mins.textContent = addLeadingZero(`${minutes}`);
     dateRef.secs.textContent = addLeadingZero(`${seconds}`);
   }, 1000);
+  animationActivator();
+  buttonStart.disabled = true;
 }
 
-buttonStart.addEventListener('click', countdownStarter);
+function animationActivator() {
+  dateRef.secs.classList.toggle('value__seconds--active');
+  const hurry = setInterval(() => {
+    Notify.info('Hurry up!');
+  }, 30000);
+}
