@@ -9,14 +9,12 @@ function startClicker() {
     const color = getRandomHexColor();
     body.style.backgroundColor = color;
   }, START_DELAY);
-  startButton.disabled = true;
-  stopButton.disabled = false;
+  switchButtons(startButton, stopButton);
 }
 
 function stopClicker() {
   clearInterval(intervalId);
-  startButton.disabled = false;
-  stopButton.disabled = true;
+  switchButtons(stopButton, startButton);
 }
 
 startButton.addEventListener('click', startClicker);
@@ -24,4 +22,9 @@ stopButton.addEventListener('click', stopClicker);
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
+function switchButtons(disabledButton, enabledButton) {
+  disabledButton.disabled = true;
+  enabledButton.disabled = false;
 }

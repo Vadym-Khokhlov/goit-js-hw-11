@@ -48,22 +48,32 @@ flatpickr('#datetime-picker', options);
 buttonStart.addEventListener('click', startCountdown);
 
 function startCountdown() {
-  const showTimer = setInterval(() => {
-    const { days, hours, minutes, seconds } = convertMs(
-      (countdownDuration = countdownDuration - 1000)
-    );
-    dateRef.days.textContent = addLeadingZero(`${days}`);
-    dateRef.hours.textContent = addLeadingZero(`${hours}`);
-    dateRef.mins.textContent = addLeadingZero(`${minutes}`);
-    dateRef.secs.textContent = addLeadingZero(`${seconds}`);
+  const intervalId = setInterval(() => {
+    showCountdown();
+    if (countdownDuration < 1000) {
+      clearInterval(intervalId);
+      activateAnimation();
+      addEndMessage();
+    }
   }, 1000);
   activateAnimation();
   buttonStart.disabled = true;
 }
 
+function showCountdown() {
+  const { days, hours, minutes, seconds } = convertMs(
+    (countdownDuration = countdownDuration - 1000)
+  );
+  dateRef.days.textContent = addLeadingZero(`${days}`);
+  dateRef.hours.textContent = addLeadingZero(`${hours}`);
+  dateRef.mins.textContent = addLeadingZero(`${minutes}`);
+  dateRef.secs.textContent = addLeadingZero(`${seconds}`);
+}
+
 function activateAnimation() {
   dateRef.secs.classList.toggle('value__seconds--active');
-  const hurry = setInterval(() => {
-    Notify.info('Hurry up! Discount is still available');
-  }, 30000);
+}
+
+function addEndMessage() {
+  Notify.warning("it's too late!");
 }
