@@ -33,7 +33,6 @@ async function onSearchSubmit(e) {
     makeGalleryMarkup(response.hits);
   }
 }
-
 let lightbox = new SimpleLightbox('.gallery a', {});
 
 function clearMarkup() {
