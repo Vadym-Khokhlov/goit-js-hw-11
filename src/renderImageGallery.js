@@ -1,18 +1,5 @@
 import { refs } from '.';
 
-// webformatURL - ссылка на маленькое изображение для списка карточек.
-// largeImageURL - ссылка на большое изображение.
-// tags - строка с описанием изображения. Подойдет для атрибута alt.
-// likes - количество лайков.
-// views - количество просмотров.
-// comments - количество комментариев.
-// downloads - количество загрузок.
-
-// function clearMarkup() {
-//   refs.countryInfo.innerHTML = '';
-//   refs.countryList.innerHTML = '';
-// }
-
 export function makeGalleryMarkup(response) {
   const markup = response
     .map(res => {
@@ -37,96 +24,6 @@ export function makeGalleryMarkup(response) {
     })
     .join('');
   refs.gallery.insertAdjacentHTML('afterbegin', markup);
-}
-
-// export function makeGalleryMarkup(photos) {
-//   const {
-//     webformatURL,
-//     largeImageURL,
-//     tags,
-//     likes,
-//     views,
-//     comments,
-//     downloads,
-//   } = photos;
-//   return `<div class="photo-card">
-//   <a class="photo-card__link" href="${largeImageURL}"><img class="photo-card__image" src="${webformatURL}" alt="${tags}" loading="lazy"/></a>
-//   <div class="info">
-//     <p class="info-item">
-//       <b>Likes</b>
-//       ${likes}
-//     </p>
-//     <p class="info-item">
-//       <b>Views</b>
-//       ${views}
-//     </p>
-//     <p class="info-item">
-//       <b>Comments</b>
-//       ${comments}
-//     </p>
-//     <p class="info-item">
-//       <b>Downloads</b>
-//       ${downloads}
-//     </p>
-//   </div>
-// </div>`;
-// }
-//<div class="socials">
-{
-  /* <ul class="info">
-<li class="info__item">
-    <svg
-      class="info__icon"
-      width="20"
-      height="20"
-    >
-      <use
-        href="./symbol-defs.svg#icon-like"
-      ></use><span>${likes}</span>
-    </svg>
-  </a>
-</li>
-<li class="socials__item">
-  <a href="" class="socials__link socials__link--dark">
-    <svg
-      class="socials__icon socials__icon--dark"
-      width="20"
-      height="20"
-    >
-      <use
-        href="./images/symbol-defs.svg#icon-twitter"
-      ></use>
-    </svg>
-  </a>
-</li>
-<li class="socials__item">
-  <a href="" class="socials__link socials__link--dark">
-    <svg
-      class="socials__icon socials__icon--dark"
-      width="20"
-      height="20"
-    >
-      <use
-        href="./images/symbol-defs.svg#icon-facebook"
-      ></use>
-    </svg>
-  </a>
-</li>
-<li class="socials__item">
-  <a href="" class="socials__link socials__link--dark">
-    <svg
-      class="socials__icon socials__icon--dark"
-      width="20"
-      height="20"
-    >
-      <use
-        href="./images/symbol-defs.svg#icon-linkedin"
-      ></use>
-    </svg>
-  </a>
-</li>
-</ul>
-</div> */
 }
 
 // <span class="info-item">
