@@ -3,10 +3,8 @@ import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import axios from 'axios';
 import { fetchImages } from './fetchImages';
-import { makeGalleryMarkup } from './renderImageGallery';
-import { delay } from 'lodash';
+import { makeGalleryMarkup } from './makeGalleryMarkup';
 
 export const refs = {
   searchForm: document.getElementById('search-form'),
@@ -59,9 +57,9 @@ async function loadMoreImages() {
     currentPage += 1;
     const response = await fetchImages(searchInput, currentPage);
     let quantityHits = response.totalHits;
-    let quantityPages = Math.ceil(quantityHits / 40); // !!!!
-    console.log(quantityPages);
-    if (quantityPages < currentPage) {
+    let quantityPages = Math.ceil(quantityHits / 40);
+
+    if (quantityPages === currentPage) {
       refs.buttonLoad.classList.add('is-hidden');
       Notify.info(`We're sorry, but you've reached the end of search results.`);
     }

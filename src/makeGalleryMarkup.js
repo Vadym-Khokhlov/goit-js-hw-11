@@ -25,8 +25,3 @@ export function makeGalleryMarkup(response) {
     .join('');
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
-
-// <img src="./images/SVG/like.svg" class="info-icon" />
-/* <img src="./images/SVG/view.svg" class="info-icon" />
-<img src="./images/SVG/comment.svg" class="info-icon" />
-<img src="./images/SVG/download.svg" class="info-icon" /> */
