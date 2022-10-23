@@ -7,7 +7,7 @@ const params =
 export async function fetchImages(searchImages, page) {
   try {
     const response = await axios.get(
-      `https://pixabay.com/api/?key=${key}&q=${searchImages}&${params}&${page}`
+      `https://pixabay.com/api/?key=${key}&q=${searchImages}&${params}&page=${page}`
     );
     return response.data;
   } catch (error) {
