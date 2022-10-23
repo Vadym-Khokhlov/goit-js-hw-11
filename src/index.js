@@ -38,7 +38,7 @@ async function onSearchSubmit(e) {
   try {
     if (response.hits.length !== 0) {
       clearMarkup();
-      Notify.info(`Hooray! We found ${response.totalHits} images.`);
+      Notify.success(`Hooray! We found ${response.totalHits} images.`);
       makeGalleryMarkup(response.hits);
       lightbox.refresh();
       refs.buttonLoad.classList.remove('is-hidden');
@@ -61,13 +61,12 @@ async function loadMoreImages() {
     let quantityHits = response.totalHits;
     let quantityPages = Math.ceil(quantityHits / 40); // !!!!
     console.log(quantityPages);
-    if (quantityPages <= currentPage) {
+    if (quantityPages < currentPage) {
       refs.buttonLoad.classList.add('is-hidden');
       Notify.info(`We're sorry, but you've reached the end of search results.`);
     }
     makeGalleryMarkup(response.hits);
     lightbox.refresh();
-    refs.buttonLoad.classList.remove('is-hidden');
   } catch (error) {
     console.log(error);
     clearMarkup();
