@@ -7,8 +7,8 @@ export function makeGalleryMarkup(response) {
       <a class="gallery-link" href="${res.largeImageURL}" >
             <img class="photo-image" src="${res.webformatURL}" alt="${res.tags}" loading="lazy"/></a>
             <div class="info">
-            <p class="info-item">
-              <b>Likes:</b><span>${res.likes}</span>
+            <p class="info-item"><b>Likes:</b>
+            <span>${res.likes}</span>
             </p>
             <p class="info-item">
               <b>Views:</b><span>${res.views}</span>
