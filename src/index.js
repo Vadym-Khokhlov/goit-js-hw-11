@@ -15,11 +15,7 @@ export const refs = {
 let currentPage = 1;
 let searchInput = '';
 
-refs.searchForm.addEventListener('submit', e => {
-  refs.gallery.innerHTML = '';
-  onSearchSubmit(e);
-  refs.buttonLoad.classList.add('is-hidden');
-});
+refs.searchForm.addEventListener('submit', onSearchSubmit);
 
 async function onSearchSubmit(e) {
   e.preventDefault();
