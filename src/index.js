@@ -25,6 +25,7 @@ async function onSearchSubmit(e) {
   e.preventDefault();
   currentPage = 1;
   try {
+    searchInput = e.currentTarget.searchQuery.value;
     if (searchInput === '') {
       clearMarkup();
       Notify.failure('Please enter your search');
