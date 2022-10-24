@@ -23,10 +23,9 @@ refs.searchForm.addEventListener('submit', e => {
 
 async function onSearchSubmit(e) {
   e.preventDefault();
+  searchInput = e.currentTarget.searchQuery.value;
   currentPage = 1;
-  searchInput = e.currentTarget.searchQuery.value.trim();
-  const response = await fetchImages(searchInput, currentPage);
-  if (searchInput === '' || response.totalHits === 0) {
+  if (searchInput === '') {
     clearMarkup();
     Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
@@ -34,6 +33,15 @@ async function onSearchSubmit(e) {
     return;
   }
   try {
+    searchInput = e.currentTarget.searchQuery.value.trim();
+    const response = await fetchImages(searchInput, currentPage);
+    if (response.totalHits === 0) {
+      clearMarkup();
+      Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
+      return;
+    }
     if (response.hits.length !== 0) {
       clearMarkup();
       Notify.success(`Hooray! We found ${response.totalHits} images.`);
