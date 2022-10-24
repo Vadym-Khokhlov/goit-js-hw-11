@@ -54,7 +54,7 @@ async function onSearchSubmit(e) {
       Notify.info(`That's all`);
     }
   } catch (error) {
-    console.log(error);
+    Notify.failure("Sorry, something wrong's happened");
   }
 }
 
