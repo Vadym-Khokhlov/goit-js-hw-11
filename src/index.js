@@ -25,11 +25,11 @@ async function onSearchSubmit(e) {
   e.preventDefault();
   currentPage = 1;
   try {
-    if (searchInput === '') {
-      clearMarkup();
-      Notify.failure('Please enter your search');
-      return;
-    }
+    // if (searchInput === '') {
+    //   clearMarkup();
+    //   Notify.failure('Please enter your search');
+    //   return;
+    // }
     searchInput = e.currentTarget.searchQuery.value.trim();
     const response = await fetchImages(searchInput, currentPage);
     if (response.totalHits === 0) {
