@@ -23,7 +23,6 @@ refs.searchForm.addEventListener('submit', e => {
 
 async function onSearchSubmit(e) {
   e.preventDefault();
-  searchInput = e.currentTarget.searchQuery.value;
   currentPage = 1;
   if (searchInput === '') {
     clearMarkup();
