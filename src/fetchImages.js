@@ -5,15 +5,11 @@ const params =
   'per_page=40&orientation=horizontal&image_type=photo&safesearch=true';
 
 export async function fetchImages(searchImages, page) {
-  try {
-    const response = await axios.get(
-      `https://pixabay.com/api/?key=${key}&q=${searchImages}&${params}&page=${page}`
-    );
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.data;
-  } catch (error) {
-    console.error(error);
+  const response = await axios.get(
+    `https://pixabay.com/api/?key=${key}&q=${searchImages}&${params}&page=${page}`
+  );
+  if (!response.ok) {
+    throw new Error(response.status);
   }
+  return response.data;
 }

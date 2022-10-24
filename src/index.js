@@ -29,7 +29,6 @@ async function onSearchSubmit(e) {
     if (searchInput === '') {
       clearMarkup();
       Notify.failure('Please enter your search');
-      return;
     }
     searchInput = e.currentTarget.searchQuery.value.trim();
     const response = await fetchImages(searchInput, currentPage);
