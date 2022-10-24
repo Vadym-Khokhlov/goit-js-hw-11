@@ -26,9 +26,7 @@ async function onSearchSubmit(e) {
   currentPage = 1;
   if (searchInput === '') {
     clearMarkup();
-    Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
-    );
+    Notify.failure('Please enter your search');
     return;
   }
   try {
