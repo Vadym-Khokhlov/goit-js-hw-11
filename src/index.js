@@ -35,6 +35,7 @@ async function onSearchSubmit(e) {
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
+      refs.buttonLoad.classList.add('is-hidden');
       return;
     }
     if (response.hits.length !== 0) {
