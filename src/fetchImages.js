@@ -9,8 +9,10 @@ export async function fetchImages(searchImages, page) {
     const response = await axios.get(
       `https://pixabay.com/api/?key=${key}&q=${searchImages}&${params}&page=${page}`
     );
+    if (!response.data) {
+      throw new Error("Sorry, something wrong's happened");
+    }
     return response.data;
-    throw new Error("Sorry, something wrong's happened :(");
   } catch (error) {
     console.error(error);
   }
