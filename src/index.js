@@ -25,6 +25,7 @@ async function onSearchSubmit(e) {
     if (searchInput === '') {
       clearMarkup();
       Notify.failure('Please enter your search');
+      refs.buttonLoad.classList.add('is-hidden');
       return;
     }
     searchInput = e.currentTarget.searchQuery.value.trim();
