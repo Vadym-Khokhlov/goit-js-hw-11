@@ -10,6 +10,7 @@ export async function fetchImages(searchImages, page) {
       `https://pixabay.com/api/?key=${key}&q=${searchImages}&${params}&page=${page}`
     );
     return response.data;
+    throw new Error(error);
   } catch (error) {
     console.error(error);
   }
